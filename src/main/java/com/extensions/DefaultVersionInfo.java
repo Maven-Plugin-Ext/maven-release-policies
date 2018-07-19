@@ -92,7 +92,7 @@ public class DefaultVersionInfo implements VersionInfo {
     }
 
     public VersionInfo getNextVersion() {
-        org.apache.maven.shared.release.versions.DefaultVersionInfo version = null;
+        DefaultVersionInfo version = null;
         if(this.digits != null) {
             List<String> digits = new ArrayList(this.digits);
             String annotationRevision = this.annotationRevision;
@@ -102,22 +102,22 @@ public class DefaultVersionInfo implements VersionInfo {
                 digits.set(digits.size() - 1, this.incrementVersionString((String)digits.get(digits.size() - 1)));
             }
 
-            version = new org.apache.maven.shared.release.versions.DefaultVersionInfo(digits, this.annotation, annotationRevision, this.buildSpecifier, this.annotationSeparator, this.annotationRevSeparator, this.buildSeparator);
+            version = new DefaultVersionInfo(digits, this.annotation, annotationRevision, this.buildSpecifier, this.annotationSeparator, this.annotationRevSeparator, this.buildSeparator);
         }
 
         return version;
     }
 
     public int compareTo(VersionInfo obj) {
-        org.apache.maven.shared.release.versions.DefaultVersionInfo that = (org.apache.maven.shared.release.versions.DefaultVersionInfo)obj;
+        DefaultVersionInfo defaultVersionInfo = (DefaultVersionInfo)obj;
         int result;
-        if(this.strVersion.startsWith(that.strVersion) && !this.strVersion.equals(that.strVersion) && this.strVersion.charAt(that.strVersion.length()) != 45) {
+        if(this.strVersion.startsWith(defaultVersionInfo.strVersion) && !this.strVersion.equals(defaultVersionInfo.strVersion) && this.strVersion.charAt(defaultVersionInfo.strVersion.length()) != 45) {
             result = 1;
-        } else if(that.strVersion.startsWith(this.strVersion) && !this.strVersion.equals(that.strVersion) && that.strVersion.charAt(this.strVersion.length()) != 45) {
+        } else if(defaultVersionInfo.strVersion.startsWith(this.strVersion) && !this.strVersion.equals(defaultVersionInfo.strVersion) && defaultVersionInfo.strVersion.charAt(this.strVersion.length()) != 45) {
             result = -1;
         } else {
-            String thisVersion = this.strVersion.toUpperCase(Locale.ENGLISH).toLowerCase(Locale.ENGLISH);
-            String thatVersion = that.strVersion.toUpperCase(Locale.ENGLISH).toLowerCase(Locale.ENGLISH);
+            String thisVersion = defaultVersionInfo.strVersion.toUpperCase(Locale.ENGLISH).toLowerCase(Locale.ENGLISH);
+            String thatVersion = defaultVersionInfo.strVersion.toUpperCase(Locale.ENGLISH).toLowerCase(Locale.ENGLISH);
             result = (new DefaultArtifactVersion(thisVersion)).compareTo(new DefaultArtifactVersion(thatVersion));
         }
 
@@ -173,7 +173,7 @@ public class DefaultVersionInfo implements VersionInfo {
         return this.strVersion;
     }
 
-    protected static String getVersionString(org.apache.maven.shared.release.versions.DefaultVersionInfo info, String buildSpecifier, String buildSeparator) {
+    protected static String getVersionString(DefaultVersionInfo info, String buildSpecifier, String buildSeparator) {
         StringBuilder sb = new StringBuilder();
         if(info.digits != null) {
             sb.append(joinDigitString(info.digits));

@@ -1,5 +1,7 @@
 Maven Release Plugin Policies
 ---
+
+[![Build Status](https://travis-ci.org/Maven-Plugin-Ext/maven-release-policies?branch=master)](https://travis-ci.org/Maven-Plugin-Ext/maven-release-policies)
 This plugin uses the run time arguments for the versioning of an artifact.
 
 ## Use Cases:
