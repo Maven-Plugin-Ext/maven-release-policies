@@ -34,9 +34,9 @@
 
   <scm>
     <connection>scm:git:https://github.com/Maven-Plugin-Ext/maven-release-policies.git</connection>
-    <developerConnection>scm:git:ssh://github.com/Maven-Plugin-Ext/maven-release-policies.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/Maven-Plugin-Ext/maven-release-policies.git</developerConnection>
     <url>https://github.com/Maven-Plugin-Ext/maven-release-policies/tree/master</url>
-    <tag>maven-release-policies-1.0</tag>
+    <tag>maven-release-policies-1.1</tag>
   </scm>
 
   <distributionManagement>
