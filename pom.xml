@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.github.maven-plugin-ext</groupId>
   <artifactId>maven-release-policies</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
 
   <name>maven-release-policies</name>
 
@@ -31,7 +30,7 @@
     <connection>scm:git:https://github.com/Maven-Plugin-Ext/maven-release-policies.git</connection>
     <developerConnection>scm:git:ssh://github.com/Maven-Plugin-Ext/maven-release-policies.git</developerConnection>
     <url>https://github.com/Maven-Plugin-Ext/maven-release-policies/tree/master</url>
-    <tag>HEAD</tag>
+    <tag>maven-release-policies-1.0</tag>
   </scm>
 
   <distributionManagement>
@@ -55,12 +54,12 @@
     <dependency>
       <groupId>org.apache.maven.release</groupId>
       <artifactId>maven-release-api</artifactId>
-      <version>${version.maven-release-plugin}</version>
+      <version>2.5.3</version>
     </dependency>
     <dependency>
       <groupId>org.apache.maven.release</groupId>
       <artifactId>maven-release-manager</artifactId>
-      <version>${version.maven-release-plugin}</version>
+      <version>2.5.3</version>
     </dependency>
     <dependency>
       <groupId>org.codehaus.plexus</groupId>
@@ -107,6 +106,20 @@
     </pluginManagement>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>org.codehaus.plexus</groupId>
         <artifactId>plexus-component-metadata</artifactId>
         <executions>
@@ -117,6 +130,17 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.7</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
       </plugin>
     </plugins>
   </build>
