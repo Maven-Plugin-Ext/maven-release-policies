@@ -5,7 +5,7 @@
 
   <groupId>io.github.maven-plugin-ext</groupId>
   <artifactId>maven-release-policies</artifactId>
-  <version>1.0</version>
+  <version>1.0-SNAPSHOT</version>
 
   <name>maven-release-policies</name>
 
