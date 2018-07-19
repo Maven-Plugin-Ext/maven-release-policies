@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Maven-Plugin-Ext/maven-release-policies?branch=master)](https://travis-ci.orgMaven-Plugin-Ext/maven-release-policies)
+[![Build Status](https://travis-ci.org/Maven-Plugin-Ext/maven-release-policies.svg??branch=master)](https://travis-ci.orgMaven-Plugin-Ext/maven-release-policies)
 
 Maven Release Plugin Policies
 ---
