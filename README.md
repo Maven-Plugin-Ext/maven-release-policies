@@ -11,16 +11,25 @@ Maven currently doesn't allow the variables in artifact version and maven releas
 
 This plugin helps in setting up the released versions at runtime using run time variables. You can add prefix, suffix, build number etc in released version without doing any changes in project.
 
+**Profile Based Release:**
 
-You can set the version of an artifact in following format:
+If you need to do multiple releases of an artifact based on maven profile then you can add a *annotation* property in maven profiles and then you can release the artifact using different profiles.
+
+E.g. If you have three mavnen profiles p1, p2, p3 and artifact with SNAPSHOT version 1.0.0-SNAPSHOT then you can perform following releases 1.0.0-p1, 1.0.0-p2, 1.0.0-p3 by running following command "mvn release:prepare -P<profile_name> -DupdateWorkingCopyVersions=false"
+
+please set updateWorkingCopyVersions to true when you are releasing last artifact so that development version is incremented for your artifact.
+
+
+**Run time parameter based release**
+
+Maven allows you to set the version of an artifact in following format:
 **digits-annotation-annotationRevision-buildSpecifier**
 
-- component is the name of the component that is being released
 - digits represents  MajorVersion.MinorVersion.IncrementalVersion number
 - annotationRevision is Integer qualifier for the annotation. (4 as in RC-4)
 - buildSpecifier is additional specifier for build. (SNAPSHOT, or build number like "20041114.081234-2")
 
-All you have to do is pass run time arguments to release:preare command:
+If you have configured this plugin then all you have to do is pass run time arguments to release:preare command for artifact version:
 
 Example Command:
 ***mvn release:prepare -DannotationRevSeparator=. -Dannotation=java -DannotationRevision=3 -DbuildSeperator=- -DbuildSpecifier=SNAPSHOT -DdryRun=true***
